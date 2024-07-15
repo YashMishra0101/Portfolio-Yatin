@@ -10,10 +10,23 @@
       src="https://kit.fontawesome.com/d6f252c21d.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMED7veT6tk0E96iAtZwlHhLv7UNZlF4gFJVbO2" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMED7veT6tk0E96iAtZwlHhLv7UNZlF4gFJVbO2"
+      crossorigin="anonymous"
+    />
+    <!--Email Js-->
 
-
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("MYcrpF_4d4KyK27G9");
+      })();
+    </script>
 
     <!--
     - favicon
@@ -37,6 +50,12 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
+    />
+
+    <!-- SweetAlert2 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
     />
   </head>
 
@@ -1130,7 +1149,7 @@
         - #BLOG
       -->
 
-      <!--Blog Section Start-->
+        <!--Blog Section Start-->
 
         <article class="blog" data-page="blog">
           <header>
@@ -1490,7 +1509,7 @@
           <section class="mapbox" data-mapbox>
             <figure>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2063592405652!2d77.31077127382802!3d28.443195092656573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd5a5c0f5ee5%3A0xdb84e509fb0203a9!2sColadco%20Digital%20And%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1720904965892!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2063592405652!2d77.31077127382802!3d28.443195092656573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd5a5c0f5ee5%3A0xdb84e509fb0203a9!2sColadco%20Digital%20And%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1720904965892!5m2!1sen!2sin"
                 width="400"
                 height="300"
                 loading="lazy"
@@ -1498,7 +1517,7 @@
             </figure>
           </section>
 
-          <section class="contact-form">
+          <!-- <section class="contact-form">
             <h3 class="h3 form-title">Contact Form</h3>
 
             <form action="#" class="form" data-form>
@@ -1535,8 +1554,50 @@
                 <span>Send Message</span>
               </button>
             </form>
+          </section> -->
+
+          <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
+            <form id="contact-form" class="form">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="fullname"
+                  class="form-input"
+                  placeholder="Full name"
+                  required
+                />
+                <input
+                  type="text"
+                  name="contact-info"
+                  class="form-input"
+                  placeholder="Email address / Contact number"
+                  required
+                />
+              </div>
+              <textarea
+                name="message"
+                class="form-input"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <button class="form-btn" type="submit">
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+            </form>
           </section>
         </article>
+        
+        <div class="chat-bot" id="chat-bot">
+          <div class="chat-header" onclick="toggleChat()">
+            <span>Chat with Yatin</span>
+          </div>
+          <div class="chat-body" id="chat-body">
+            <div class="messages" id="messages"></div>
+            <input type="text" id="user-input" placeholder="Type your message..." onkeypress="sendMessage(event)">
+          </div>
+        </div>
       </div>
     </main>
 
@@ -1556,5 +1617,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

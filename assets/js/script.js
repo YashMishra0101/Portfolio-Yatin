@@ -269,3 +269,119 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+  // Contact Form
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const serviceID = 'service_dr0vdm3'; 
+    const templateID = 'template_aa8gtv9'; 
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        document.getElementById('contact-form').reset();
+        Swal.fire({
+          icon: 'success',
+          title: 'Message sent successfully',
+          text: '😊',
+          timer: 2000,
+          showConfirmButton: false
+        });
+      }, (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to send message',
+          text: 'Error: ',
+          timer: 2000,
+          showConfirmButton: false
+        });
+        console.log('Failed to send message. Error: ' + JSON.stringify(err));
+      });
+  });
+
+
+// Chat Bot Section
+
+document.addEventListener("DOMContentLoaded", function() {
+  const botName = 'Yatin';
+  const messagesContainer = document.getElementById('messages');
+
+  function addMessage(message, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${sender}`;
+    messageElement.innerHTML = message;
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function botResponse(message) {
+    setTimeout(() => {
+      addMessage(message, 'bot');
+    }, 500);
+  }
+
+  function handleUserInput(input) {
+    addMessage(input, 'user');
+    if (!userName) {
+      userName = input;
+      botResponse(`Nice to meet you, ${userName} 😊<br>What type of service do you need ?<br>
+         <div class="serviceoptions">
+              <div class="serviceoption"><input type="checkbox" name="service" value="Web Development"><label class="service-option">Web Development</label></div>
+              <div class="serviceoption"><input type="checkbox" name="service" value="App Development"><label class="service-option">App Development</label></div>
+              <div class="serviceoption"><input type="checkbox" name="service" value="SEO"><label class="service-option">SEO</label></div>
+              <div class="serviceoption"><input type="checkbox" name="service" value="Other"><label class="service-option">Other</label></div>
+          </div>
+
+        <button class="submit-btn" onclick="submitService()">Submit</button>`);
+    } else if (!serviceType) {
+      serviceType = input;
+      botResponse(`Thank you for your interest in ${serviceType}. Could you please share your contact number or email address so we can get back to you?`);
+    } else if (!contactInfo) {
+      contactInfo = input;
+      botResponse(`Thanks for sharing your contact information. We'll get back to you soon. Have a great day, ${userName} 😊`);
+      setTimeout(() => {
+        const chatBody = document.getElementById('chat-body');
+        chatBody.style.display = 'none';
+      }, 4000);
+    }
+  }
+
+  function submitService() {
+    const checkboxes = document.querySelectorAll('input[name="service"]:checked');
+    if (checkboxes.length > 0) {
+      const selectedServices = Array.from(checkboxes).map(cb => cb.value).join(', ');
+      handleUserInput(selectedServices);
+    } else {
+      botResponse('Please select at least one service.');
+    }
+  }
+
+  function sendMessage(event) {
+    if (event.key === 'Enter') {
+      const inputField = document.getElementById('user-input');
+      const input = inputField.value.trim();
+      if (input !== '') {
+        handleUserInput(input);
+        inputField.value = '';
+      }
+    }
+  }
+
+  function toggleChat() {
+    const chatBody = document.getElementById('chat-body');
+    chatBody.style.display = chatBody.style.display === 'block' ? 'none' : 'block';
+  }
+
+  let userName = '';
+  let serviceType = '';
+  let contactInfo = '';
+
+  botResponse(`Hello 🧑‍💻, My name is ${botName} and I'm here to help you. What's your name ?`);
+
+  window.sendMessage = sendMessage;
+  window.toggleChat = toggleChat;
+  window.submitService = submitService;
+});
+
+  
