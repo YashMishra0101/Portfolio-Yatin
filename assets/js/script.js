@@ -227,16 +227,14 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 
-// contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
+
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
 
-    // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -246,13 +244,9 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
-
-
-// page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
@@ -269,9 +263,8 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+// Contact From Section Start
 
-
-  // Contact Form
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
@@ -283,25 +276,27 @@ for (let i = 0; i < navigationLinks.length; i++) {
         document.getElementById('contact-form').reset();
         Swal.fire({
           icon: 'success',
-          title: 'Message sent successfully',
+          title: "Message sent successfully. We'll get back to you soon.",
           text: '😊',
-          timer: 2000,
+          timer: 3000,
           showConfirmButton: false
-        });
+        });        
       }, (err) => {
         Swal.fire({
           icon: 'error',
           title: 'Failed to send message',
           text: 'Error: ',
-          timer: 2000,
+          timer: 3000,
           showConfirmButton: false
         });
         console.log('Failed to send message. Error: ' + JSON.stringify(err));
       });
   });
 
+// Contact From Section End
 
-// Chat Bot Section
+
+// Chat Bot Section Start
 
 document.addEventListener("DOMContentLoaded", function() {
   const botName = 'Yatin';
@@ -332,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function() {
               <div class="serviceoption"><input type="checkbox" name="service" value="SEO"><label class="service-option">SEO</label></div>
               <div class="serviceoption"><input type="checkbox" name="service" value="Other"><label class="service-option">Other</label></div>
           </div>
-
         <button class="submit-btn" onclick="submitService()">Submit</button>`);
     } else if (!serviceType) {
       serviceType = input;
@@ -340,9 +334,17 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (!contactInfo) {
       contactInfo = input;
       botResponse(`Thanks for sharing your contact information. We'll get back to you soon. Have a great day, ${userName} 😊`);
+      sendEmail(userName, serviceType, contactInfo);
       setTimeout(() => {
         const chatBody = document.getElementById('chat-body');
         chatBody.style.display = 'none';
+        Swal.fire({
+          icon: 'success',
+          title: "Message sent successfully. We'll get back to you soon.",
+          text: '😊',
+          timer: 4000,
+          showConfirmButton: false
+        });
       }, 4000);
     }
   }
@@ -373,6 +375,21 @@ document.addEventListener("DOMContentLoaded", function() {
     chatBody.style.display = chatBody.style.display === 'block' ? 'none' : 'block';
   }
 
+  function sendEmail(userName, serviceType, contactInfo) {
+    const templateParams = {
+      user_name: userName,
+      service_type: serviceType,
+      contact_info: contactInfo
+    };
+
+    emailjs.send('service_dr0vdm3', 'template_aa8gtv9', templateParams)
+      .then(() => {
+        console.log('Chat information sent successfully!');
+      }, (err) => {
+        console.error('Failed to send chat information. Error:', JSON.stringify(err));
+      });
+  }
+
   let userName = '';
   let serviceType = '';
   let contactInfo = '';
@@ -384,4 +401,5 @@ document.addEventListener("DOMContentLoaded", function() {
   window.submitService = submitService;
 });
 
-  
+
+// Chat Bot Section End

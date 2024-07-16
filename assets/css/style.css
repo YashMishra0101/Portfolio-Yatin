@@ -1969,6 +1969,7 @@ p {
 .chat-header:hover{
   background-color:rgb(227, 195, 15);
 }
+
 .chat-body {
   display: none;
   background-color: #f8ebeb;
@@ -2040,3 +2041,15 @@ input[type="text"] {
 background-color:rgb(227, 195, 15);
 
 }
+
+
+/* .video-container {
+  margin-left: 20px;
+  background-color:gold;
+}
+.video-container video {
+  width: 15%;
+  height: 15%;
+  border-radius: 10px;
+  background-color:gold;
+} */

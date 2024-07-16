@@ -17,7 +17,6 @@
       crossorigin="anonymous"
     />
     <!--Email Js-->
-
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
@@ -28,8 +27,7 @@
       })();
     </script>
 
-    <!--
-    - favicon
+    <!--- favicon
   -->
     <link
       rel="shortcut icon"
@@ -57,6 +55,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
     />
+     <!-- Include Lottie Web Library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.14/lottie.min.js"></script>
   </head>
 
   <body>
@@ -1497,9 +1497,8 @@
 
         <!--Blog Section End -->
 
-        <!--
-        - #CONTACT
-      -->
+    
+        <!-- Contact Form Section Start -->
 
         <article class="contact" data-page="contact">
           <header>
@@ -1516,45 +1515,6 @@
               ></iframe>
             </figure>
           </section>
-
-          <!-- <section class="contact-form">
-            <h3 class="h3 form-title">Contact Form</h3>
-
-            <form action="#" class="form" data-form>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="fullname"
-                  class="form-input"
-                  placeholder="Full name"
-                  required
-                  data-form-input
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="Email address"
-                  required
-                  data-form-input
-                />
-              </div>
-
-              <textarea
-                name="message"
-                class="form-input"
-                placeholder="Your Message"
-                required
-                data-form-input
-              ></textarea>
-
-              <button class="form-btn" type="submit" disabled data-form-btn>
-                <ion-icon name="paper-plane"></ion-icon>
-                <span>Send Message</span>
-              </button>
-            </form>
-          </section> -->
 
           <section class="contact-form">
             <h3 class="h3 form-title">Contact Form</h3>
@@ -1589,6 +1549,10 @@
           </section>
         </article>
         
+      <!-- Contact Form Section End -->
+
+      <!-- Chat Bot Section Start -->
+
         <div class="chat-bot" id="chat-bot">
           <div class="chat-header" onclick="toggleChat()">
             <span>Chat with Yatin</span>
@@ -1598,7 +1562,9 @@
             <input type="text" id="user-input" placeholder="Type your message..." onkeypress="sendMessage(event)">
           </div>
         </div>
-      </div>
+
+      <!-- Chat Bot Section End -->
+
     </main>
 
     <!--
