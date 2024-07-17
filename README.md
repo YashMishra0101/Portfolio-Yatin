@@ -1,7 +1,7 @@
 # Yatin Vohra's Portfolio
 
-![Profile Image](path/to/your/image1.jpg)
-![Project Showcase](path/to/your/image2.jpg)
+![Profile Image](assets/images/imageOne.png)
+![Project Showcase](assets/images/imageTwo.png)
 
 ## About Me
 
