@@ -268,8 +268,8 @@ for (let i = 0; i < navigationLinks.length; i++) {
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    const serviceID = 'service_dr0vdm3'; 
-    const templateID = 'template_aa8gtv9'; 
+    const serviceID = 'service_nlnx5wa'; 
+    const templateID = 'template_okaqtw8'; 
 
     emailjs.sendForm(serviceID, templateID, this)
       .then(() => {
@@ -333,19 +333,12 @@ document.addEventListener("DOMContentLoaded", function() {
       botResponse(`Thank you for your interest in ${serviceType}. Could you please share your contact number or email address so we can get back to you?`);
     } else if (!contactInfo) {
       contactInfo = input;
-      botResponse(`Thanks for sharing your contact information. We'll get back to you soon. Have a great day, ${userName} 😊`);
+      botResponse(`Thanks for sharing your contact information. We'll get back to you soon. Have a great day, ${userName} 😊.`);
       sendEmail(userName, serviceType, contactInfo);
       setTimeout(() => {
         const chatBody = document.getElementById('chat-body');
         chatBody.style.display = 'none';
-        Swal.fire({
-          icon: 'success',
-          title: "Message sent successfully. We'll get back to you soon.",
-          text: '😊',
-          timer: 4000,
-          showConfirmButton: false
-        });
-      }, 4000);
+      }, 8000);
     }
   }
 
@@ -382,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function() {
       contact_info: contactInfo
     };
 
-    emailjs.send('service_dr0vdm3', 'template_aa8gtv9', templateParams)
+    emailjs.send('service_btasmoj', 'template_okaqtw8', templateParams)
       .then(() => {
         console.log('Chat information sent successfully!');
       }, (err) => {
@@ -396,10 +389,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   botResponse(`Hello 🧑‍💻, My name is ${botName} and I'm here to help you. What's your name ?`);
 
+  setTimeout(() => {
+    toggleChat();
+  }, 4000);
+
   window.sendMessage = sendMessage;
   window.toggleChat = toggleChat;
   window.submitService = submitService;
 });
-
 
 // Chat Bot Section End
