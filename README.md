@@ -1,4 +1,4 @@
-# Yatin Vohra's Portfolio
+# Yatin Vohra Portfolio
 
 ![Profile Image](assets/images/imageOne.png)
 ![Project Showcase](assets/images/imageTwo.png)
