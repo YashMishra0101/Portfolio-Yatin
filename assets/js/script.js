@@ -268,7 +268,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    const serviceID = 'service_nlnx5wa'; 
+    const serviceID = 'service_hxdupy7'; 
     const templateID = 'template_okaqtw8'; 
 
     emailjs.sendForm(serviceID, templateID, this)
@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function() {
       contact_info: contactInfo
     };
 
-    emailjs.send('service_btasmoj', 'template_okaqtw8', templateParams)
+    emailjs.send('service_hxdupy7', 'template_okaqtw8', templateParams)
       .then(() => {
         console.log('Chat information sent successfully!');
       }, (err) => {
